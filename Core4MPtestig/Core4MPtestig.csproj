@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<Project Sdk="Microsoft.NET.Sdk.Web" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" >
+ 
+ <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+ 
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+	  <BuildDir>$(ProjectDir)\Core4MPtestig\bin\Release\netcoreapp2.0</BuildDir>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.All">
+	<Version>2.0.5</Version>
+	</PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design">
+	<Version>2.0.2</Version>
+     </PackageReference>
+  </ItemGroup>
+
+  
+  <ItemGroup>
+    <Content Include="publish\*.*">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>  
+  </ItemGroup>
+
+
+ <ItemGroup>
+    <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools">
+	   <Version>2.0.2</Version>
+	</DotNetCliToolReference>
+  </ItemGroup>
+
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+ 
+
+   <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+      <AspNetCoreCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+   </Target>
+	
+
+
+</Project>
